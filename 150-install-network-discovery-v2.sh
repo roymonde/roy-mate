@@ -12,20 +12,17 @@ set -e
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################
-echo "#################################################"
-echo "If it feels like the downloads are too slow"
-echo "Stop the installation with CTRL + C"
-echo "and run the alias - mirror in the terminal"
-echo "#################################################"
 
-sudo pacman -Syyu
-sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings --noconfirm --needed
-sudo pacman -S mate mate-extra --noconfirm --needed
-sudo systemctl enable lightdm.service -f
-sudo systemctl set-default graphical.target
+echo "Network Discovery"
 
+sudo pacman -S --noconfirm --needed avahi
+sudo systemctl enable avahi-daemon.service
+sudo systemctl start avahi-daemon.service
 
-echo "Remove anything you do not like from the installed applications"
+#shares on a mac
+sudo pacman -S --noconfirm --needed nss-mdns
+sudo sed -i 's/dns myhostname/mdns dns wins myhostname/g' /etc/nsswitch.conf
 
-#sudo pacman -R ...
-sudo pacman -R mate-backgrounds --noconfirm
+echo "################################################################"
+echo "####       network discovery  software installed        ########"
+echo "################################################################"

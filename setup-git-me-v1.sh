@@ -12,20 +12,17 @@ set -e
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
 #
 ##################################################################################################################
-echo "#################################################"
-echo "If it feels like the downloads are too slow"
-echo "Stop the installation with CTRL + C"
-echo "and run the alias - mirror in the terminal"
-echo "#################################################"
+# change into your name and email.
 
-sudo pacman -Syyu
-sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings --noconfirm --needed
-sudo pacman -S mate mate-extra --noconfirm --needed
-sudo systemctl enable lightdm.service -f
-sudo systemctl set-default graphical.target
+git init
+git config --global user.name "roymonde"
+git config --global user.email "roystenvaseie@gmail.com"
+sudo git config --system core.editor nano
+git config --global credential.helper cache
+git config --global credential.helper 'cache --timeout=25000'
+git config --global push.default simple
 
 
-echo "Remove anything you do not like from the installed applications"
-
-#sudo pacman -R ...
-sudo pacman -R mate-backgrounds --noconfirm
+echo "################################################################"
+echo "###################    T H E   E N D      ######################"
+echo "################################################################"
