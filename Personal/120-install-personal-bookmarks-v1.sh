@@ -15,7 +15,7 @@ set -e
 
 echo "Copy bookmarks"
 
-cp settings/bookmarks/.gtk-bookmarks ~
+cp settings/bookmarks/bookmarks ~
 
 echo "################################################################"
 echo "#########      bookmarks  copied                ################"
